@@ -1,12 +1,12 @@
-{
-    "id": "7",
-    "description": "Комната 7",
+[{
+    "id": 7,
+    "description": "Комната_7",
     "exits": [
         {
-            "north": "2"
+            "north": 2
         },
         {
-            "west": "6"
+            "west": 6
         }
     ]
-}
+}]
