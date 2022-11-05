@@ -1,15 +1,7 @@
 [{
     "id": 11,
     "description": "Комната_11",
-    "exits": [
-        {
-            "north": 6
-        },
-        {
-            "east": 12
-        },
-        {
-            "south": 16
-        }
-    ]
+    "north": 6,
+    "east": 12,
+    "south": 16
 }]

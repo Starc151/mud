@@ -9,12 +9,8 @@ import (
 )
 
 type Room struct {
-	Id          int
-	Description string
-	North       int
-	East        int
-	South       int
-	West        int
+	Id, North, East, South, West int
+	Description                  string
 }
 
 func getDataRoom(idRoom int) []Room {
@@ -37,8 +33,21 @@ func getDataRoom(idRoom int) []Room {
 
 func EnterRoom(idRoom int) {
 	roomData := getDataRoom(idRoom)
-	fmt.Printf("Вы находитесь в %s.\n"+
-		"Выходы:\n"+
-		"HP: hp MP: mp",
-		roomData[0].Description)
+	north, east, south, west := "", "", "", ""
+	if roomData[0].North != 0 {
+		north = "Север"
+	}
+	if roomData[0].East != 0 {
+		east = "Восток"
+	}
+	if roomData[0].South != 0 {
+		south = "Юг"
+	}
+	if roomData[0].West != 0 {
+		west = "Запад"
+	}
+
+	fmt.Printf("Вы находитесь в %s.\n", roomData[0].Description)
+	fmt.Printf("Выходы: %s %s %s %s\n", north, east, south, west)
+	fmt.Printf("HP: hp MP: mp")
 }

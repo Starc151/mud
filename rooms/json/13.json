@@ -1,15 +1,7 @@
 [{
     "id": 13,
     "description": "Стартовая комната",
-    "exits": [
-        {
-            "north": 8
-        },
-        {
-            "east": 14
-        },
-        {
-            "south": 18
-        }
-    ]
+    "north": 8,
+    "east": 14,
+    "south": 18
 }]
