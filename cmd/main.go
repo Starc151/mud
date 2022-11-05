@@ -5,5 +5,5 @@ import (
 )
 
 func main() {
-	rooms.GetDataRoom(1)
+	rooms.EnterRoom(3)
 }

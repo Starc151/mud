@@ -1,29 +1,44 @@
 package rooms
 
 import (
+	"encoding/json"
 	"fmt"
-	"io"
+	"io/ioutil"
 	"os"
 	"strconv"
 )
 
-func GetDataRoom(idRoom int) {
-	file, err := os.Open("src/rooms/json/" + strconv.Itoa(idRoom) + ".json")
+type Room struct {
+	Id          int
+	Description string
+	North       int
+	East        int
+	South       int
+	West        int
+}
+
+func getDataRoom(idRoom int) []Room {
+	file, err := os.Open("rooms/json/" + strconv.Itoa(idRoom) + ".json")
 	if err != nil {
 		panic(err)
 	}
 	defer file.Close()
-	data := make([]byte, 64)
-	for {
-		n, err := file.Read(data)
-		if err == io.EOF {
-			break
-		}
-		fmt.Print(string(data[:n]))
+	data, err := ioutil.ReadAll(file)
+	if err != nil {
+		panic(err)
 	}
-
+	var roomData []Room
+	errJ := json.Unmarshal(data, &roomData)
+	if errJ != nil {
+		panic(errJ)
+	}
+	return roomData
 }
 
-func EnterRoom(description string, i int) {
-	fmt.Printf("Вы находитесь в %s комнате.\nВыходы:\nHP: hp MP: mp", description)
+func EnterRoom(idRoom int) {
+	roomData := getDataRoom(idRoom)
+	fmt.Printf("Вы находитесь в %s.\n"+
+		"Выходы:\n"+
+		"HP: hp MP: mp",
+		roomData[0].Description)
 }
