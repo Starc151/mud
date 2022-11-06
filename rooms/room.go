@@ -49,5 +49,4 @@ func EnterRoom(idRoom int) {
 
 	fmt.Printf("Вы находитесь в %s.\n", roomData[0].Description)
 	fmt.Printf("Выходы: %s %s %s %s\n", north, east, south, west)
-	fmt.Printf("HP: hp MP: mp")
 }
