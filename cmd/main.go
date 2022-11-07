@@ -5,5 +5,5 @@ import (
 )
 
 func main() {
-	rooms.EnterRoom(13)
+	rooms.StartLoc()
 }
