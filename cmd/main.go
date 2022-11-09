@@ -1,9 +1,9 @@
 package main
 
 import (
-	"obj/rooms"
+	player "obj/users/players"
 )
 
 func main() {
-	rooms.StartLoc()
+	player.Actionn()
 }
