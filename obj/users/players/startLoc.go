@@ -1,6 +1,8 @@
 package player
 
+import "fmt"
+
 func Start() {
 	hp, mp := PlayerStart()
-	Action(13, hp, mp)
+	fmt.Println(Action(13, hp, mp))
 }
