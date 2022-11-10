@@ -5,12 +5,10 @@ import (
 	"obj/rooms"
 )
 
-func Action(idRoom int) {
-	rooms.EnterRoom(idRoom)
+func Start() {
+	PlayerStart()
+	rooms.EnterRoom(13)
 	var action int
 	fmt.Scan(&action)
-	if action < 1 {
-		return
-	}
 	Action(action)
 }

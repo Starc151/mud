@@ -5,5 +5,5 @@ import (
 )
 
 func main() {
-	player.Actionn()
+	player.Start()
 }
