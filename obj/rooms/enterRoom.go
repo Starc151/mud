@@ -24,10 +24,10 @@ func EnterRoom(idRoom int) map[string]int {
 		west = "З"
 	}
 	exits := map[string]int{
-		"с": conf.InterfaceFloatToInt(roomData["north"]),
-		"в": conf.InterfaceFloatToInt(roomData["east"]),
-		"ю": conf.InterfaceFloatToInt(roomData["south"]),
-		"з": conf.InterfaceFloatToInt(roomData["west"]),
+		"север":  conf.InterfaceFloatToInt(roomData["north"]),
+		"восток": conf.InterfaceFloatToInt(roomData["east"]),
+		"юг":     conf.InterfaceFloatToInt(roomData["south"]),
+		"запад":  conf.InterfaceFloatToInt(roomData["west"]),
 	}
 	fmt.Printf("Вы находитесь в %s.\n", roomData["description"])
 	fmt.Printf("Выходы: %s%s%s%s\n", north, east, south, west)
