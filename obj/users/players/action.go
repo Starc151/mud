@@ -5,21 +5,28 @@ import (
 	"obj/rooms"
 )
 
-func Action(idRoom, hp, mp int) string {
+func Action(idRoom, hp, mp int) int {
 	exits := rooms.EnterRoom(idRoom)
-	hp -= 1
-	fmt.Printf("HP: %d, MP: %d \n", hp, mp)
-	var action string
-	fmt.Println("Выши действия?")
+	action := ""
+	fmt.Println("Ваши действия?")
 	fmt.Scan(&action)
-	if action == "выход" {
-		return "Вы вышли"
-	}
+	action = instructions(action)
 
-	exit := exits[action]
-	if exit == 0 {
+	switch action {
+	case "err":
 		fmt.Println("Так нельзя")
 		return Action(idRoom, hp, mp)
+	case "exitGame":
+		fmt.Println("Вы вышли")
+		return 0
+	case "north", "south", "east", "west":
+		exit := rooms.ExitRoom(action, exits)
+		if exit == 0 {
+			fmt.Println("Туда не пройти")
+			return Action(idRoom, hp, mp)
+		}
+		return Action(exit, hp, mp)
+	default:
+		return Action(idRoom, hp, mp)
 	}
-	return Action(exit, hp, mp)
 }

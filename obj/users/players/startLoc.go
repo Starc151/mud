@@ -1,8 +1,11 @@
 package player
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func Start() {
 	hp, mp := PlayerStart()
-	fmt.Println(Action(13, hp, mp))
+	fmt.Println("Привет! Вы в игре!")
+	Action(13, hp, mp)
 }
