@@ -1,7 +1,8 @@
 package player
 
+import "strings"
+
 func instructions(action string) string {
-	tmpStr := ""
 	actionsMap := map[string]string{
 		"север":  "north",
 		"юг":     "south",
@@ -10,14 +11,9 @@ func instructions(action string) string {
 		"выход":  "exitGame",
 	}
 	for kM, vM := range actionsMap {
-		for _, v := range kM {
-			tmpStr += string(v)
-			if action == tmpStr {
-				return vM
-
-			}
+		if strings.Contains(kM, action) {
+			return vM
 		}
-		tmpStr = ""
 	}
 	return "err"
 }
