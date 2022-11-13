@@ -19,10 +19,10 @@ func Action(idRoom, hp, mp int) int {
 	case "exitGame":
 		fmt.Println("Вы вышли")
 		return 0
-	case "north", "south", "east", "west":
+	case "север", "восток", "юг", "запад":
 		exit := rooms.ExitRoom(action, exits)
 		if exit == 0 {
-			fmt.Println("Туда не пройти")
+			fmt.Println(" но туда не пройти")
 			return Action(idRoom, hp, mp)
 		}
 		return Action(exit, hp, mp)

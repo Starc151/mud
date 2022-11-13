@@ -4,10 +4,10 @@ import "strings"
 
 func instructions(action string) string {
 	actionsMap := map[string]string{
-		"север":  "north",
-		"юг":     "south",
-		"восток": "east",
-		"запад":  "west",
+		"север":  "север",
+		"юг":     "юг",
+		"восток": "восток",
+		"запад":  "запад",
 		"выход":  "exitGame",
 	}
 	for kM, vM := range actionsMap {

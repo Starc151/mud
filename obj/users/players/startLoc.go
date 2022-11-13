@@ -5,7 +5,8 @@ import (
 )
 
 func Start() {
+	const startLocation int = 13
 	hp, mp := PlayerStart()
 	fmt.Println("Привет! Вы в игре!")
-	Action(13, hp, mp)
+	Action(startLocation, hp, mp)
 }
