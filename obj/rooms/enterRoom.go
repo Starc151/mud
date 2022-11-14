@@ -12,7 +12,7 @@ func exits(exit interface{}, numexit string) string {
 	}
 	return "_"
 }
-func EnterRoom(idRoom int) map[string]int {
+func EnterRoom(idRoom int) (map[string]int, string) {
 	id := strconv.Itoa(idRoom)
 	data := conf.GetData("obj/rooms/json/" + id + ".json")
 	roomData := data.(map[string]interface{})
@@ -26,7 +26,8 @@ func EnterRoom(idRoom int) map[string]int {
 		"юг":     conf.InterfaceFloatToInt(roomData["south"]),
 		"запад":  conf.InterfaceFloatToInt(roomData["west"]),
 	}
-	fmt.Printf("Вы находитесь в %s.\n", roomData["description"])
+	description := roomData["description"].(string)
+	fmt.Printf("Вы находитесь в %s.\n", description)
 	fmt.Printf("Выходы: %s%s%s%s\n", north, east, south, west)
-	return exits
+	return exits, description
 }
