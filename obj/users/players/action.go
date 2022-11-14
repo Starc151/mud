@@ -5,7 +5,7 @@ import (
 	"obj/rooms"
 )
 
-func Action(idRoom, hp, mp int) {
+func Action(idRoom, hp, mp, attack int) {
 	exits, description := rooms.EnterRoom(idRoom)
 	action := ""
 	for {

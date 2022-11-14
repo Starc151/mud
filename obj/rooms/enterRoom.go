@@ -16,6 +16,7 @@ func EnterRoom(idRoom int) (map[string]int, string) {
 	id := strconv.Itoa(idRoom)
 	data := conf.GetData("obj/rooms/json/" + id + ".json")
 	roomData := data.(map[string]interface{})
+	npc := roomData["npc"].(map[string]interface{})
 	north := exits(roomData["north"], "С")
 	east := exits(roomData["east"], "В")
 	south := exits(roomData["south"], "Ю")
@@ -27,6 +28,7 @@ func EnterRoom(idRoom int) (map[string]int, string) {
 		"запад":  conf.InterfaceFloatToInt(roomData["west"]),
 	}
 	description := roomData["description"].(string)
+	fmt.Println(npc["nameNPC"])
 	fmt.Printf("Вы находитесь в %s.\n", description)
 	fmt.Printf("Выходы: %s%s%s%s\n", north, east, south, west)
 	return exits, description
