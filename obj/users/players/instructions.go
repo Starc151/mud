@@ -11,7 +11,7 @@ func instructions(action string) string {
 		"выход":  "exitGame",
 	}
 	for kM, vM := range actionsMap {
-		if strings.Contains(kM, action) {
+		if strings.HasPrefix(kM, action) {
 			return vM
 		}
 	}

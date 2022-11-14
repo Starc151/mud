@@ -5,28 +5,26 @@ import (
 	"obj/rooms"
 )
 
-func Action(idRoom, hp, mp int) int {
+func Action(idRoom, hp, mp int) {
 	exits := rooms.EnterRoom(idRoom)
 	action := ""
-	fmt.Println("Ваши действия?")
-	fmt.Scan(&action)
-	action = instructions(action)
-
-	switch action {
-	case "err":
-		fmt.Println("Так нельзя")
-		return Action(idRoom, hp, mp)
-	case "exitGame":
-		fmt.Println("Вы вышли")
-		return 0
-	case "север", "восток", "юг", "запад":
-		exit := rooms.ExitRoom(action, exits)
-		if exit == 0 {
-			fmt.Println(" но туда не пройти")
-			return Action(idRoom, hp, mp)
+	for {
+		fmt.Println("Ваши действия?")
+		fmt.Scan(&action)
+		action = instructions(action)
+		switch action {
+		case "err":
+			fmt.Println("Так нельзя")
+		case "север", "восток", "юг", "запад":
+			fmt.Printf("Вы пошли на %s... ", action)
+			if exits[action] == 0 {
+				fmt.Println("но туда нет прохода")
+			} else {
+				exits = rooms.EnterRoom(exits[action])
+			}
+		default:
+			fmt.Println("Вы вышли")
+			return
 		}
-		return Action(exit, hp, mp)
-	default:
-		return Action(idRoom, hp, mp)
 	}
 }
