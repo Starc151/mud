@@ -6,7 +6,9 @@ import (
 )
 
 func Action(idRoom, hp, mp, attack int) {
-	exits, description := rooms.EnterRoom(idRoom)
+	exits, description, nameNPC := rooms.EnterRoom(idRoom)
+	rooms.Description(description, nameNPC)
+	rooms.ExitsRooms(exits)
 	action := ""
 	for {
 		fmt.Println("Ваши действия?")
@@ -20,10 +22,13 @@ func Action(idRoom, hp, mp, attack int) {
 			if exits[action] == 0 {
 				fmt.Println("но туда нет прохода")
 			} else {
-				exits, description = rooms.EnterRoom(exits[action])
+				exits, description, nameNPC = rooms.EnterRoom(exits[action])
+				rooms.Description(description, nameNPC)
+				rooms.ExitsRooms(exits)
 			}
 		case "description":
-			fmt.Println(description)
+			rooms.Description(description, nameNPC)
+			rooms.ExitsRooms(exits)
 		case "exitGame":
 			fmt.Println("Вы вышли")
 			return
