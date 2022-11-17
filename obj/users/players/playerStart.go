@@ -4,11 +4,11 @@ import (
 	conf "config"
 )
 
-func PlayerStart() (int, int, int) {
+func PlayerStart() (hp, mp, attack uint16) {
 	data := conf.GetData("obj/users/players/playerData.json")
 	startingLife := data.(map[string]interface{})
-	hp := conf.InterfaceFloatToInt(startingLife["HP"])
-	mp := conf.InterfaceFloatToInt(startingLife["MP"])
-	attack := conf.InterfaceFloatToInt(startingLife["attack"])
+	hp = conf.InterfaceFloatTouint16(startingLife["HP"])
+	mp = conf.InterfaceFloatTouint16(startingLife["MP"])
+	attack = conf.InterfaceFloatTouint16(startingLife["attack"])
 	return hp, mp, attack
 }

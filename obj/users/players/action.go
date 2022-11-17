@@ -5,7 +5,7 @@ import (
 	"obj/rooms"
 )
 
-func Action(idRoom, hp, mp, attack int) {
+func Action(idRoom uint16, hp, mp, attack uint16) {
 	exits, description, nameNPC := rooms.EnterRoom(idRoom)
 	rooms.Description(description, nameNPC)
 	rooms.ExitsRooms(exits)

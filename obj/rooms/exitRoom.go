@@ -2,7 +2,7 @@ package rooms
 
 import "fmt"
 
-func ExitsRooms(exits map[string]int) {
+func ExitsRooms(exits map[string]uint16) {
 	north := exitsLetter(exits["север"], "С")
 	east := exitsLetter(exits["восток"], "В")
 	south := exitsLetter(exits["юг"], "Ю")
@@ -10,7 +10,7 @@ func ExitsRooms(exits map[string]int) {
 	fmt.Printf("Выходы: %s%s%s%s\n", north, east, south, west)
 }
 
-func exitsLetter(exit int, letter string) string {
+func exitsLetter(exit uint16, letter string) string {
 	if exit != 0 {
 		return letter
 	}

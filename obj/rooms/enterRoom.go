@@ -3,7 +3,6 @@ package rooms
 import (
 	conf "config"
 	"fmt"
-	"strconv"
 )
 
 func Description(description string, nameNPC string) {
@@ -13,17 +12,17 @@ func Description(description string, nameNPC string) {
 		fmt.Printf("Вы находитесь в %s \nТут бродит %s\n", description, nameNPC)
 	}
 }
-func EnterRoom(idRoom int) (map[string]int, string, string) {
-	id := strconv.Itoa(idRoom)
+func EnterRoom(idRoom uint16) (map[string]uint16, string, string) {
+	id := fmt.Sprint(idRoom)
 	data := conf.GetData("obj/rooms/json/" + id + ".json")
 	roomData := data.(map[string]interface{})
 	var npc map[string]interface{}
 	var nameNPC string
-	exits := map[string]int{
-		"север":  conf.InterfaceFloatToInt(roomData["north"]),
-		"восток": conf.InterfaceFloatToInt(roomData["east"]),
-		"юг":     conf.InterfaceFloatToInt(roomData["south"]),
-		"запад":  conf.InterfaceFloatToInt(roomData["west"]),
+	exits := map[string]uint16{
+		"север":  conf.InterfaceFloatTouint16(roomData["north"]),
+		"восток": conf.InterfaceFloatTouint16(roomData["east"]),
+		"юг":     conf.InterfaceFloatTouint16(roomData["south"]),
+		"запад":  conf.InterfaceFloatTouint16(roomData["west"]),
 	}
 	description := roomData["description"].(string)
 	if roomData["npc"] != nil {
