@@ -17,6 +17,8 @@ func Action(idRoom uint16, hp, mp, attack uint16) {
 		switch action {
 		case "err":
 			fmt.Println("Так нельзя")
+		case "short":
+			fmt.Println("Уточните")
 		case "север", "восток", "юг", "запад":
 			fmt.Printf("Вы пошли на %s... ", action)
 			if exits[action] == 0 {
