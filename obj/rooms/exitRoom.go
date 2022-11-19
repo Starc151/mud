@@ -7,7 +7,7 @@ func ExitsRooms(exits map[string]uint16) {
 	east := exitsLetter(exits["восток"], "В")
 	south := exitsLetter(exits["юг"], "Ю")
 	west := exitsLetter(exits["запад"], "З")
-	fmt.Printf("Выходы: %s%s%s%s\n", north, east, south, west)
+	fmt.Printf("🏃: %s%s%s%s ", north, east, south, west)
 }
 
 func exitsLetter(exit uint16, letter string) string {

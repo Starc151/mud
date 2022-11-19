@@ -6,10 +6,9 @@ import (
 )
 
 func Description(description string, nameNPC string) {
-	if nameNPC == "" {
-		fmt.Printf("Вы находитесь в %s \n", description)
-	} else {
-		fmt.Printf("Вы находитесь в %s \nТут бродит %s\n", description, nameNPC)
+	fmt.Printf("Вы находитесь в %s \n", description)
+	if nameNPC != "" {
+		fmt.Printf("Тут бродит %s\n", nameNPC)
 	}
 }
 func EnterRoom(idRoom uint16) (map[string]uint16, string, string) {
