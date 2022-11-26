@@ -1,7 +1,7 @@
 package main
 
 import (
-	player "obj/users/players"
+	player "players"
 )
 
 func main() {

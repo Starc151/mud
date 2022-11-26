@@ -1,7 +1,7 @@
 package rooms
 
 import (
-	conf "config"
+	"conf"
 	"fmt"
 )
 
@@ -13,7 +13,7 @@ func Description(description string, nameNPC string) {
 }
 func EnterRoom(idRoom uint16) (map[string]uint16, string, string) {
 	id := fmt.Sprint(idRoom)
-	data := conf.GetData("obj/rooms/json/" + id + ".json")
+	data := conf.GetData("rooms/json/" + id + ".json")
 	roomData := data.(map[string]interface{})
 	var npc map[string]interface{}
 	var nameNPC string

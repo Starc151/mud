@@ -1,11 +1,11 @@
 package player
 
 import (
-	conf "config"
+	"conf"
 )
 
 func PlayerStart() (hp, mp, attack uint16) {
-	data := conf.GetData("obj/users/players/playerData.json")
+	data := conf.GetData("players/playerData.json")
 	startingLife := data.(map[string]interface{})
 	hp = conf.InterfaceFloatTouint16(startingLife["HP"])
 	mp = conf.InterfaceFloatTouint16(startingLife["MP"])

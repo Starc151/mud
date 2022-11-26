@@ -3,8 +3,9 @@ package player
 import (
 	"bufio"
 	"fmt"
-	"obj/rooms"
+	"helpGame"
 	"os"
+	"rooms"
 )
 
 func actionScan() string {
@@ -12,7 +13,7 @@ func actionScan() string {
 	in.Scan()
 	return in.Text()
 }
-func Action(idRoom uint16, hp, mp, attack uint16) {
+func action(idRoom uint16, hp, mp, attack uint16) {
 	exits, description, nameNPC := rooms.EnterRoom(idRoom)
 	rooms.Description(description, nameNPC)
 	rooms.ExitsRooms(exits)
@@ -29,8 +30,6 @@ func Action(idRoom uint16, hp, mp, attack uint16) {
 		action = instructions(actionScan())
 		switch action {
 		case "err":
-			fmt.Println("Так нельзя")
-		case "short":
 			fmt.Println("Уточните...")
 		case "север", "восток", "юг", "запад":
 			fmt.Printf("Вы пошли на %s... ", action)
@@ -52,6 +51,14 @@ func Action(idRoom uint16, hp, mp, attack uint16) {
 				fmt.Println("Вы вышли")
 				return
 			}
+		case "attack":
+			if nameNPC != "" {
+				fmt.Printf("Вы атаковали %s\n", nameNPC)
+			} else {
+				fmt.Println("Тут нет никого")
+			}
+		case "help":
+			helpGame.HelpGame()
 		}
 	}
 }
