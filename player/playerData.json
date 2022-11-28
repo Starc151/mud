@@ -2,5 +2,5 @@
     "name": "Starc",
     "HP": 100,
     "MP": 50,
-    "attack": 5
+    "damage": 5
 }

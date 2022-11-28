@@ -13,7 +13,7 @@ func actionScan() string {
 	in.Scan()
 	return in.Text()
 }
-func action(idRoom uint16, hp, mp, attack uint16) {
+func action(idRoom uint16, hp, mp, damage uint16) {
 	exits, description, nameNPC := rooms.EnterRoom(idRoom)
 	rooms.Description(description, nameNPC)
 	rooms.ExitsRooms(exits)

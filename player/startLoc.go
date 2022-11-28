@@ -6,7 +6,7 @@ import (
 
 func Start() {
 	const startLocation uint16 = 13
-	hp, mp, attack := PlayerStart()
+	hp, mp, damage := PlayerStart()
 	fmt.Println("Привет! Вы в игре!")
-	action(startLocation, hp, mp, attack)
+	action(startLocation, hp, mp, damage)
 }
