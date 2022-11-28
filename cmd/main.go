@@ -1,7 +1,7 @@
 package main
 
 import (
-	player "players"
+	"player"
 )
 
 func main() {
