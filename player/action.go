@@ -13,20 +13,17 @@ func actionScan() string {
 	in.Scan()
 	return in.Text()
 }
-func action(idRoom uint16, hp, mp, damage uint16) {
+func actionSwitch(idRoom uint16, player paramPlayer) {
 	exits, description, nameNPC := rooms.EnterRoom(idRoom)
 	rooms.Description(description, nameNPC)
 	rooms.ExitsRooms(exits)
 	action := ""
 	for {
-		if hp == 0 {
+		if player.Hp == 0 {
 			fmt.Println("упс....")
 			Start()
 		}
-		if hp <= 5 {
-
-		}
-		fmt.Printf("❤ %d 🧪 %d. Ваши действия?\n", hp, mp)
+		fmt.Printf("❤ %d 🧪 %d. Ваши действия?\n", player.Hp, player.Mp)
 		action = instructions(actionScan())
 		switch action {
 		case "err":

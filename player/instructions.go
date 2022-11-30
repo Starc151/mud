@@ -5,9 +5,7 @@ import "strings"
 func instructionsString(str string) []string {
 	strAction := strings.Split(str, " ")
 	var action []string
-	for _, v := range strAction {
-		action = append(action, v)
-	}
+	action = append(action, strAction...)
 	return action
 }
 func lib(action []string) string {

@@ -18,10 +18,10 @@ func EnterRoom(idRoom uint16) (map[string]uint16, string, string) {
 	var npc map[string]interface{}
 	var nameNPC string
 	exits := map[string]uint16{
-		"север":  conf.InterfaceFloatTouint16(roomData["north"]),
-		"восток": conf.InterfaceFloatTouint16(roomData["east"]),
-		"юг":     conf.InterfaceFloatTouint16(roomData["south"]),
-		"запад":  conf.InterfaceFloatTouint16(roomData["west"]),
+		"север":  conf.InterfaceFloatToUint16(roomData["north"]),
+		"восток": conf.InterfaceFloatToUint16(roomData["east"]),
+		"юг":     conf.InterfaceFloatToUint16(roomData["south"]),
+		"запад":  conf.InterfaceFloatToUint16(roomData["west"]),
 	}
 	description := roomData["description"].(string)
 	if roomData["npc"] != nil {

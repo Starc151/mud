@@ -2,5 +2,7 @@
     "name": "Starc",
     "HP": 100,
     "MP": 50,
-    "damage": 5
+    "damage": 5,
+    "exp": 0,
+    "lvl": 1 
 }
