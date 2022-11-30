@@ -4,9 +4,5 @@
     "north": 8,
     "east": 14,
     "south": 18,
-    "npc": {
-        "nameNPC": "Скелет",
-        "hpNPC": 20,
-        "attackNPC": 5
-    }
+    "idNpc": 1
 }

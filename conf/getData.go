@@ -6,7 +6,7 @@ import (
 	"os"
 )
 
-func GetData(path string) interface{} {
+func GetData(path string) map[string]interface{} {
 	file, err := os.Open(path)
 	if err != nil {
 		panic(err)
@@ -22,5 +22,5 @@ func GetData(path string) interface{} {
 	if errJ != nil {
 		panic(errJ)
 	}
-	return result
+	return result.(map[string]interface{})
 }

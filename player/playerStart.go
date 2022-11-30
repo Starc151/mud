@@ -14,8 +14,7 @@ type paramPlayer struct {
 }
 
 func PlayerStart() paramPlayer {
-	data := conf.GetData("player/playerData.json")
-	startingLife := data.(map[string]interface{})
+	startingLife := conf.GetData("player/playerData.json")
 	var player paramPlayer
 	player.Hp = conf.InterfaceFloatToUint16(startingLife["HP"])
 	player.Mp = conf.InterfaceFloatToUint16(startingLife["MP"])
