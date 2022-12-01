@@ -31,7 +31,7 @@ func actionSwitch(idRoom uint16, player PlayerStruct) {
 			if exitsRoomMap[action] != 0 {
 				room = rooms.EnterRoom(exitsRoomMap[action])
 				rooms.Description(room.Description)
-				rooms.ExitsRooms(room.ExitsRoom)
+				exitsRoomMap = rooms.ExitsRooms(room.ExitsRoom)
 			} else {
 				fmt.Println("Но туда нет прохода")
 			}
