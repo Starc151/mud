@@ -12,10 +12,11 @@ type NpcStruct struct {
 	Exp    int
 }
 
-func GetNpc(idNpc uint16) {
+func Npc(idNpc uint16) NpcStruct {
 	idNpcStr := fmt.Sprint(idNpc)
 	dataNpc := conf.GetData("npc/" + idNpcStr + ".json")
 	var Npc NpcStruct
 	Npc.Name = dataNpc["name"].(string)
-	fmt.Printf("Тут бродит %s", Npc.Name)
+	fmt.Printf("Тут бродит %s\n", Npc.Name)
+	return Npc
 }
