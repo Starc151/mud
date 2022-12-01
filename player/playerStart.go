@@ -4,7 +4,7 @@ import (
 	"conf"
 )
 
-type paramPlayer struct {
+type PlayerStruct struct {
 	Name   string
 	Hp     uint16
 	Mp     uint16
@@ -13,9 +13,9 @@ type paramPlayer struct {
 	Lvl    uint16
 }
 
-func PlayerStart() paramPlayer {
+func PlayerStart() PlayerStruct {
 	startingLife := conf.GetData("player/playerData.json")
-	var player paramPlayer
+	var player PlayerStruct
 	player.Hp = conf.InterfaceFloatToUint16(startingLife["HP"])
 	player.Mp = conf.InterfaceFloatToUint16(startingLife["MP"])
 	player.Damage = conf.InterfaceFloatToUint16(startingLife["damage"])

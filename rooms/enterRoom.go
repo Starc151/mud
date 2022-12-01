@@ -5,19 +5,20 @@ import (
 	"fmt"
 )
 
-type roomStruct struct {
+type ExitsRoomStruct struct {
+	North uint16
+	East  uint16
+	South uint16
+	West  uint16
+}
+type RoomStruct struct {
 	Id          uint16
 	Description string
-	ExitsRoom   struct {
-		North uint16
-		East  uint16
-		South uint16
-		West  uint16
-	}
-	IdNpc uint16
+	ExitsRoom   ExitsRoomStruct
+	IdNpc       uint16
 }
 
-func EnterRoom(idRoom uint16) (room roomStruct) {
+func EnterRoom(idRoom uint16) (room RoomStruct) {
 	id := fmt.Sprint(idRoom)
 	roomData := conf.GetData("rooms/json/" + id + ".json")
 	room.ExitsRoom.North = conf.InterfaceFloatToUint16(roomData["north"])

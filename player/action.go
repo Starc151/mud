@@ -14,7 +14,7 @@ func actionScan() string {
 	in.Scan()
 	return in.Text()
 }
-func actionSwitch(idRoom uint16, player paramPlayer) {
+func actionSwitch(idRoom uint16, player PlayerStruct) {
 	room := rooms.EnterRoom(idRoom)
 	rooms.Description(room.Description)
 	rooms.ExitsRooms(room.ExitsRoom)

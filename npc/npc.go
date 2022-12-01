@@ -5,7 +5,7 @@ import (
 	"fmt"
 )
 
-type npcType struct {
+type NpcStruct struct {
 	Name   string
 	Hp     int
 	Damage int
@@ -13,8 +13,9 @@ type npcType struct {
 }
 
 func GetNpc(idNpc uint16) {
-	dataNpc := conf.GetData("npc/skeleton.json")
-	var npc npcType
-	npc.Name = dataNpc["name"].(string)
-	fmt.Printf("Тут бродит %s", npc.Name)
+	idNpcStr := fmt.Sprint(idNpc)
+	dataNpc := conf.GetData("npc/" + idNpcStr + ".json")
+	var Npc NpcStruct
+	Npc.Name = dataNpc["name"].(string)
+	fmt.Printf("Тут бродит %s", Npc.Name)
 }

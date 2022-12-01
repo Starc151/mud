@@ -2,13 +2,12 @@ package rooms
 
 import "fmt"
 
-func ExitsRooms(exits struct) {
-	fmt.Print(exits)
-	// north := exitsLetter(exits["север"], "С")
-	// east := exitsLetter(exits["восток"], "В")
-	// south := exitsLetter(exits["юг"], "Ю")
-	// west := exitsLetter(exits["запад"], "З")
-	// fmt.Printf("🏃: %s%s%s%s ", north, east, south, west)
+func ExitsRooms(exit ExitsRoomStruct) {
+	north := exitsLetter(exit.North, "С")
+	east := exitsLetter(exit.East, "В")
+	south := exitsLetter(exit.South, "Ю")
+	west := exitsLetter(exit.West, "З")
+	fmt.Printf("🏃: %s%s%s%s ", north, east, south, west)
 }
 
 func exitsLetter(exit uint16, letter string) string {
