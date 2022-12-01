@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"helpGame"
+	"npc"
 	"os"
 	"rooms"
 )
@@ -13,16 +14,13 @@ func actionScan() string {
 	in.Scan()
 	return in.Text()
 }
-func actionSwitch(idRoom uint16, player paramPlayer) {
-	exits, description, nameNPC := rooms.EnterRoom(idRoom)
-	rooms.Description(description, nameNPC)
-	rooms.ExitsRooms(exits)
+func actionSwitch(idRoom uint16, player PlayerStruct) {
+	room := rooms.EnterRoom(idRoom)
+	rooms.Description(room.Description)
+	npc := npc.Npc(room.IdNpc)
+	exitsRoomMap := rooms.ExitsRooms(room.ExitsRoom)
 	action := ""
 	for {
-		if player.Hp == 0 {
-			fmt.Println("упс....")
-			Start()
-		}
 		fmt.Printf("❤ %d 🧪 %d. Ваши действия?\n", player.Hp, player.Mp)
 		action = instructions(actionScan())
 		switch action {
@@ -30,16 +28,16 @@ func actionSwitch(idRoom uint16, player paramPlayer) {
 			fmt.Println("Уточните...")
 		case "север", "восток", "юг", "запад":
 			fmt.Printf("Вы пошли на %s... ", action)
-			if exits[action] != 0 {
-				exits, description, nameNPC = rooms.EnterRoom(exits[action])
-				rooms.Description(description, nameNPC)
-				rooms.ExitsRooms(exits)
+			if exitsRoomMap[action] != 0 {
+				room = rooms.EnterRoom(exitsRoomMap[action])
+				rooms.Description(room.Description)
+				rooms.ExitsRooms(room.ExitsRoom)
 			} else {
 				fmt.Println("Но туда нет прохода")
 			}
 		case "description":
-			rooms.Description(description, nameNPC)
-			rooms.ExitsRooms(exits)
+			rooms.Description(room.Description)
+			rooms.ExitsRooms(room.ExitsRoom)
 		case "exitGame":
 			fmt.Println("Вы точно хотите выйти?")
 			var exitGame string
@@ -49,8 +47,8 @@ func actionSwitch(idRoom uint16, player paramPlayer) {
 				return
 			}
 		case "attack":
-			if nameNPC != "" {
-				fmt.Printf("Вы атаковали %s\n", nameNPC)
+			if npc.Name != "" {
+				fmt.Printf("Вы атаковали %s\n", npc.Name)
 			} else {
 				fmt.Println("Тут нет никого")
 			}

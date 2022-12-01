@@ -5,28 +5,27 @@ import (
 	"fmt"
 )
 
-func Description(description string, nameNPC string) {
-	fmt.Printf("Вы находитесь в %s \n", description)
-	if nameNPC != "" {
-		fmt.Printf("Тут бродит %s\n", nameNPC)
-	}
+type ExitsRoomStruct struct {
+	North uint16
+	East  uint16
+	South uint16
+	West  uint16
 }
-func EnterRoom(idRoom uint16) (map[string]uint16, string, string) {
+type RoomStruct struct {
+	Id          uint16
+	Description string
+	ExitsRoom   ExitsRoomStruct
+	IdNpc       uint16
+}
+
+func EnterRoom(idRoom uint16) (room RoomStruct) {
 	id := fmt.Sprint(idRoom)
-	data := conf.GetData("rooms/json/" + id + ".json")
-	roomData := data.(map[string]interface{})
-	var npc map[string]interface{}
-	var nameNPC string
-	exits := map[string]uint16{
-		"север":  conf.InterfaceFloatToUint16(roomData["north"]),
-		"восток": conf.InterfaceFloatToUint16(roomData["east"]),
-		"юг":     conf.InterfaceFloatToUint16(roomData["south"]),
-		"запад":  conf.InterfaceFloatToUint16(roomData["west"]),
-	}
-	description := roomData["description"].(string)
-	if roomData["npc"] != nil {
-		npc = roomData["npc"].(map[string]interface{})
-		nameNPC = npc["nameNPC"].(string)
-	}
-	return exits, description, nameNPC
+	roomData := conf.GetData("rooms/json/" + id + ".json")
+	room.ExitsRoom.North = conf.InterfaceFloatToUint16(roomData["north"])
+	room.ExitsRoom.East = conf.InterfaceFloatToUint16(roomData["east"])
+	room.ExitsRoom.South = conf.InterfaceFloatToUint16(roomData["south"])
+	room.ExitsRoom.West = conf.InterfaceFloatToUint16(roomData["west"])
+	room.Description = roomData["description"].(string)
+	room.IdNpc = conf.InterfaceFloatToUint16(roomData["idNpc"])
+	return room
 }
