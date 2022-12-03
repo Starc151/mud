@@ -21,7 +21,8 @@ func actionSwitch(idRoom uint16, player PlayerStruct) {
 	exitsRoomMap := rooms.ExitsRooms(room.ExitsRoom)
 	action := ""
 	for {
-		fmt.Printf("❤ %d Ваши действия?\n", player.Hp)
+		fmt.Printf("HP:%d EXP: %d|%d\n", player.Hp, player.Exp, player.Lvl*100+player.Lvl*10)
+		fmt.Println("Ваши действия?")
 		action = instructions(actionScan())
 		switch action {
 		case "err":
