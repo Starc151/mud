@@ -19,9 +19,11 @@ func actionSwitch(idRoom uint16, player PlayerStruct) {
 	rooms.Description(room.Description)
 	npc := npc.Npc(room.IdNpc)
 	exitsRoomMap := rooms.ExitsRooms(room.ExitsRoom)
+	var nextLvl uint16
 	action := ""
 	for {
-		fmt.Printf("HP:%d EXP: %d|%d\n", player.Hp, player.Exp, player.Lvl*100+player.Lvl*10)
+		nextLvl = player.Lvl * 1100
+		fmt.Printf("HP:%d EXP: %d|%d\n", player.Hp, player.Exp, nextLvl)
 		fmt.Println("Ваши действия?")
 		action = instructions(actionScan())
 		switch action {
