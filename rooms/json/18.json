@@ -3,5 +3,6 @@
     "description": "Комната_18",
     "north": 13,
     "east": 19,
-    "west": 17
+    "west": 17,
+    "fileNpc": "skeleton"
 }

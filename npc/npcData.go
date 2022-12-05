@@ -15,7 +15,7 @@ type NpcStruct struct {
 func NpcData(fileNpc string) NpcStruct {
 	var Npc NpcStruct
 	if fileNpc != "" {
-		npcData := conf.GetData("npc/" + fileNpc)
+		npcData := conf.GetData("npc/" + fileNpc + ".json")
 		Npc.Name = npcData["name"].(string)
 		Npc.Damage = conf.InterfaceFloatToUint16(npcData["damage"])
 		Npc.Hp = conf.InterfaceFloatToUint16(npcData["hp"])

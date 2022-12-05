@@ -2,6 +2,5 @@
     "id": 14,
     "description": "Комната_14",
     "east": 15,
-    "west": 13,
-    "fileNpc": "skeleton.json"
+    "west": 13
 }

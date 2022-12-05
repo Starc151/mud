@@ -7,27 +7,25 @@ import (
 )
 
 func attack(npc npc.NpcStruct, player PlayerStruct) PlayerStruct {
-	fmt.Printf("Вы атаковали %s\n", npc.Name)
-	nextLvl := player.Lvl * 1100
+	fmt.Printf("Вы вероломно атаковали %s\n", npc.Name)
+	// nextLvl := player.Lvl * 1100
 	for {
 		time.Sleep(1000 * time.Millisecond)
+		if npc.Hp <= player.Damage {
+			npc.Hp = 0
+			player.Exp += npc.Exp
+			fmt.Printf("Вы нанесли смертельный удао и зверски убили беззащитного %sа\n", npc.Name)
+			fmt.Printf("Вы получили %d опыта\n", npc.Exp)
+			return lvlUp(player)
+		}
 		npc.Hp -= player.Damage
-		player.Hp -= npc.Damage
-		fmt.Printf("❤ %d  |  ❤ %d\n", player.Hp, npc.Hp)
-		if player.Hp <= 0 {
-			player.Exp -= player.Exp / 10
+		fmt.Printf("Вы нанесли %d урона, HP %sа: %d\n", player.Damage, npc.Name, npc.Hp)
+		time.Sleep(1000 * time.Millisecond)
+		if player.Hp <= npc.Damage {
 			fmt.Println("Упс...")
 			Start()
 		}
-		if npc.Hp <= 0 {
-			fmt.Printf("Вы зверски убили беззащитный %s\n", npc.Name)
-			fmt.Printf("и получили %d опыта\n", npc.Exp)
-			player.Exp += npc.Exp
-			if player.Exp >= nextLvl {
-				player.Lvl = (player.Exp / 1100) + 1
-				fmt.Printf("Ваш уроыень теперь %d\n", player.Lvl)
-			}
-			return player
-		}
+		player.Hp -= npc.Damage
+		fmt.Printf("Вам нанесено %d урона, HP: %d\n", npc.Damage, player.Hp)
 	}
 }
