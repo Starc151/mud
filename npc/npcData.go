@@ -12,11 +12,10 @@ type NpcStruct struct {
 	Exp    uint16
 }
 
-func NpcData(idNpc uint16) NpcStruct {
-	idNpcStr := fmt.Sprint(idNpc)
+func NpcData(fileNpc string) NpcStruct {
 	var Npc NpcStruct
-	if idNpc != 0 {
-		npcData := conf.GetData("npc/" + idNpcStr + ".json")
+	if fileNpc != "" {
+		npcData := conf.GetData("npc/" + fileNpc)
 		Npc.Name = npcData["name"].(string)
 		Npc.Damage = conf.InterfaceFloatToUint16(npcData["damage"])
 		Npc.Hp = conf.InterfaceFloatToUint16(npcData["hp"])

@@ -17,7 +17,7 @@ func actionScan() string {
 func actionSwitch(idRoom uint16, player PlayerStruct) {
 	room := rooms.EnterRoom(idRoom)
 	rooms.Description(room.Description)
-	npcData := npc.NpcData(room.IdNpc)
+	npcData := npc.NpcData(room.FileNpc)
 	exitsRoomMap := rooms.ExitsRooms(room.ExitsRoom)
 	var nextLvl uint16
 	action := ""
@@ -34,14 +34,14 @@ func actionSwitch(idRoom uint16, player PlayerStruct) {
 			if exitsRoomMap[action] != 0 {
 				room = rooms.EnterRoom(exitsRoomMap[action])
 				rooms.Description(room.Description)
-				npcData = npc.NpcData(room.IdNpc)
+				npcData = npc.NpcData(room.FileNpc)
 				exitsRoomMap = rooms.ExitsRooms(room.ExitsRoom)
 			} else {
 				fmt.Println("Но туда нет прохода")
 			}
 		case "description":
 			rooms.Description(room.Description)
-			npcData = npc.NpcData(room.IdNpc)
+			npcData = npc.NpcData(room.FileNpc)
 			rooms.ExitsRooms(room.ExitsRoom)
 		case "exitGame":
 			fmt.Println("Вы точно хотите выйти?")

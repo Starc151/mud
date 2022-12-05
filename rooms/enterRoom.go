@@ -15,7 +15,7 @@ type RoomStruct struct {
 	Id          uint16
 	Description string
 	ExitsRoom   ExitsRoomStruct
-	IdNpc       uint16
+	FileNpc     string
 }
 
 func EnterRoom(idRoom uint16) (room RoomStruct) {
@@ -26,6 +26,8 @@ func EnterRoom(idRoom uint16) (room RoomStruct) {
 	room.ExitsRoom.South = conf.InterfaceFloatToUint16(roomData["south"])
 	room.ExitsRoom.West = conf.InterfaceFloatToUint16(roomData["west"])
 	room.Description = roomData["description"].(string)
-	room.IdNpc = conf.InterfaceFloatToUint16(roomData["idNpc"])
+	if roomData["fileNpc"] != nil {
+		room.FileNpc = roomData["fileNpc"].(string)
+	}
 	return room
 }
